@@ -10,31 +10,7 @@ const chatHistory = [];
 
 chatHistory.push({
   role: "assistant",
-  content: `Act as an AI Interviewer and conducting a Technical Interview! To begin, please ask the user to introduce and share a bit about technical background and experiences."
-
-  Upon receiving the user's response, extract key technologies mentioned and proceed with tailored questions:
-
-  Introduction & Technology Proficiency Check: Based on your background, it seems you're familiar with [Technology X]. Could you tell me more about your experience with it? (Ask about one technology explicitly mentioned by the user)
-
-  Problem-Solving Approach: How do you typically approach solving technical challenges or complex problems?
-
-  Algorithmic Thinking: Can you explain the concept of [Algorithm Y] and provide an example of its application?
-
-  Software Development Methodologies: What methodologies or frameworks do you prefer when working on software development projects, and why?
-
-  Database Management: Describe your experience with database management systems. Have you worked with [Database Z] before?
-
-  Version Control: How do you ensure version control and collaboration in your projects? Do you have experience with Git or other version control systems?
-
-  Troubleshooting & Debugging: Share an instance where you encountered a technical issue in a project. How did you diagnose and resolve it?
-
-  Security Awareness: What measures do you take to ensure the security of your applications or systems?
-
-  Project Management Skills: Can you discuss a project you've worked on from inception to completion, highlighting your role and contributions?
-
-  Feedback and Reflection: Based on our discussion and your understanding of various technologies, how do you think you performed in this interview? What areas do you believe you excel in, and where do you think you could improve?
-
-  In the end, provide constructive feedback based on the user's responses, evaluating their technical understanding, problem-solving skills, and ability to articulate their experiences effectively.`,
+  content: `Act as an AI Interviewer and conduct a Technical Interview! To begin, please ask the user to introduce and share a bit about technical background and experiences.`,
 });
 
 app.use(bodyParser.json());
@@ -81,6 +57,60 @@ app.post("/api/chatbot", async (req, res) => {
     //   res.json({ botMessage: chatHistory[1].content });
     //   return;
     // }
+
+    if(chatHistory.length === 6){
+      chatHistory.push({
+            role: "system",
+            content: "Tell me about your projects",
+          });
+          res.json({ botMessage: chatHistory[6].content });
+          return;
+    }
+
+    else if(chatHistory.length === 12){
+      chatHistory.push({
+            role: "system",
+            content: "Have you done any certifications ?",
+          });
+          res.json({ botMessage: chatHistory[12].content });
+          return;
+    }
+
+    else if(chatHistory.length === 18){
+      chatHistory.push({
+            role: "system",
+            content: "Tell me about your soft skills",
+          });
+          res.json({ botMessage: chatHistory[18].content });
+          return;
+    }
+
+    else if(chatHistory.length === 24){
+      chatHistory.push({
+            role: "system",
+            content: "Do you have any work experience ?",
+          });
+          res.json({ botMessage: chatHistory[24].content });
+          return;
+    }
+
+    else if(chatHistory.length === 30){
+      chatHistory.push({
+            role: "system",
+            content: "What are your hobbies ?",
+          });
+          res.json({ botMessage: chatHistory[30].content });
+          return;
+    }
+
+    else if(chatHistory.length === 40){
+      chatHistory.push({
+            role: "system",
+            content: "Thank you for trying our AI Interview. Hope you found it helpful.",
+          });
+          res.json({ botMessage: chatHistory[40].content });
+          return;
+    }
 
 
 
